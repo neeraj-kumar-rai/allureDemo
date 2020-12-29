@@ -13,4 +13,12 @@ steps:
 - task: CmdLine@2
   inputs:
     script: 'dir'
+    
+- task: CmdLine@2
+  inputs:
+   script: 'dir target'
+  
+- task: CmdLine@2
+  inputs:
+    script: 'dir allure-results'
    
