@@ -19,14 +19,14 @@ steps:
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
+    goals: 'clean install'
     
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
     goals: 'allure:serve'
     publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    testResultsFiles: '*/*surefire-reports/TEST-*.xml'
     javaHomeOption: 'JDKVersion'
     mavenVersionOption: 'Default'
     mavenAuthenticateFeed: false
@@ -35,4 +35,8 @@ steps:
        
 - task: CmdLine@2
   inputs:
-    script: 'dir target/allure-results'
+    script: 'dir target'
+
+- task: CmdLine@2
+  inputs:
+    script: 'dir allure-results'
