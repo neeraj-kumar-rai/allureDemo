@@ -39,4 +39,4 @@ steps:
 
 - task: CmdLine@2
   inputs:
-    script: 'dir allure-results'
+    script: 'dir target\allure-results'
