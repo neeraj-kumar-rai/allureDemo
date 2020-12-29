@@ -19,6 +19,9 @@ steps:
     jdkVersionOption: '1.8'
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
+- task: CmdLine@2
+  inputs:
+    script: 'mvn clean test'
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'mvn clean test'
     
