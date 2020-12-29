@@ -19,9 +19,15 @@ steps:
     jdkVersionOption: '1.8'
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
-- task: CmdLine@2
+- task: Maven@3
   inputs:
-    script: 'mvn clean test'
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'mvn clean test'
+    mavenPomFile: 'pom.xml'
+    goals: 'mvn allure:serve'
+    publishJUnitResults: true
+    testResultsFiles: '**/allure-results'
+    javaHomeOption: 'JDKVersion'
+    mavenVersionOption: 'Default'
+    mavenAuthenticateFeed: false
+    effectivePomSkip: false
+    sonarQubeRunAnalysis: false
     
