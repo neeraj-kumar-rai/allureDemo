@@ -26,7 +26,7 @@ steps:
     mavenPomFile: 'pom.xml'
     goals: 'allure:serve'
     publishJUnitResults: true
-    testResultsFiles: '**/target/allure-results'
+    # testResultsFiles: '**/target/allure-results'
     javaHomeOption: 'JDKVersion'
     mavenVersionOption: 'Default'
     mavenAuthenticateFeed: false
