@@ -21,17 +21,17 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
     
-# - task: Maven@3
-#   inputs:
-#     mavenPomFile: 'pom.xml'
-#     goals: 'allure:serve'
-#     publishJUnitResults: true
-#     testResultsFiles: '**/target/allure-results'
-#     javaHomeOption: 'JDKVersion'
-#     mavenVersionOption: 'Default'
-#     mavenAuthenticateFeed: false
-#     effectivePomSkip: false
-#     sonarQubeRunAnalysis: false
+- task: Maven@3
+  inputs:
+    mavenPomFile: 'pom.xml'
+    goals: 'allure:serve'
+    publishJUnitResults: true
+    testResultsFiles: '**/target/allure-results'
+    javaHomeOption: 'JDKVersion'
+    mavenVersionOption: 'Default'
+    mavenAuthenticateFeed: false
+    effectivePomSkip: false
+    sonarQubeRunAnalysis: false
 
 - task: CmdLine@2
   inputs:
