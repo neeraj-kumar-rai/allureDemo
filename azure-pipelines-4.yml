@@ -7,7 +7,7 @@ trigger:
 - main
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'windows-latest'
 
 steps:
 - task: Maven@3
@@ -19,4 +19,36 @@ steps:
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
+    goals: 'clean install'
+    
+- task: Maven@3
+  inputs:
+    mavenPomFile: 'pom.xml'
+    goals: 'allure:report'
+    publishJUnitResults: true
+    testResultsFiles: '**/allure-results/allure-maven-plugin/index.html'
+    javaHomeOption: 'JDKVersion'
+    mavenVersionOption: 'Default'
+    mavenAuthenticateFeed: false
+    effectivePomSkip: false
+    sonarQubeRunAnalysis: false
+
+- task: Maven@3
+  inputs:
+    mavenPomFile: 'pom.xml'
+    goals: 'allure:serve'
+    publishJUnitResults: true
+    testResultsFiles: '**/allure-results/allure-maven-plugin/index.html'
+    javaHomeOption: 'JDKVersion'
+    mavenVersionOption: 'Default'
+    mavenAuthenticateFeed: false
+    effectivePomSkip: false
+    sonarQubeRunAnalysis: false
+       
+- task: CmdLine@2
+  inputs:
+    script: 'dir target'
+
+- task: CmdLine@2
+  inputs:
+    script: 'dir target\allure-results'
